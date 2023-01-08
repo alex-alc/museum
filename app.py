@@ -14,19 +14,24 @@ def catalog():
 	return render_template('catalog.html')
 
 
+@app.route('/art.html')
+def art():
+	return render_template('art.html')
+
+
 @app.route('/energy.html')
 def energy():
 	return render_template('energy.html')
 
 
-@app.route('/card01.html')
-def card01():
-	return render_template('card01.html')
+@app.route('/card_art.html')
+def card_art():
+	return render_template('card_art.html')
 
 
-@app.route('/card02.html')
-def card02():
-	return render_template('card02.html')
+@app.route('/card_en.html')
+def card_en():
+	return render_template('card_en.html')
 
 
 @app.route('/user/<string:name>')
