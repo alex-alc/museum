@@ -184,7 +184,7 @@ h6,
   justify-content: space-between;
   padding: 10px 0 10px 30px;
   font-family: "Open Sans", sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   color: #5c768d;
   white-space: nowrap;
   transition: 0.3s;
@@ -264,6 +264,18 @@ h6,
   .navbar .dropdown .dropdown:hover>ul {
     left: -100%;
   }
+
+.navbar badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0 10px 30px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  color: #fff;
+  white-space: nowrap;
+  transition: 0.3s;
+}
 }
 
 /**
