@@ -2,14 +2,23 @@ from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///ideas.db'
-db = SQLAlchemy(app)
+host = 'ext7.mysql.pythonanywhere-services.com'
+user = 'ext7'
+password = 'm123123MM'
+db_name = 'ext7$ideas'
 
-app.app_context().push()
+app = Flask(__name__)
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///ideas.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+mysqlconnector://{user}:{password}@{host}/{db_name}'
+app.config['SQLALCHEMY_POOL_RECYCLE'] = 299
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
 
 
 class Idea(db.Model):
+
+	__tablename__ = "idea"
+
 	id = db.Column(db.Integer, primary_key=True)
 	author = db.Column(db.String(50), nullable=False)
 	email = db.Column(db.String(50), nullable=False)
@@ -18,7 +27,7 @@ class Idea(db.Model):
 	title = db.Column(db.String(100), nullable=False)
 	intro = db.Column(db.String(350), nullable=False)
 	description = db.Column(db.Text, nullable=False)
-	date = db.Column(db.DateTime, default=datetime.now)
+	date_ = db.Column(db.DateTime, default=datetime.now)
 	published = db.Column(db.Boolean, default=False)
 	archive = db.Column(db.Boolean, default=False)
 
@@ -44,7 +53,7 @@ def art():
 
 @app.route('/it.html')
 def it():
-	ideas = Idea.query.filter_by(category='IT', published=True).order_by(Idea.date.desc()).all()
+	ideas = Idea.query.filter_by(category='IT', published=True).order_by(Idea.date_.desc()).all()
 	return render_template('it.html', ideas=ideas)
 
 
@@ -73,7 +82,15 @@ def create_idea():
 		title = request.form['title']
 		intro = request.form['intro']
 		description = request.form['description']
-		new_idea = Idea(author=author, email=email, phone=phone, category=category, title=title, intro=intro, description=description)
+		new_idea = Idea(author=author,
+		                email=email,
+		                phone=phone,
+		                category=category,
+		                title=title,
+		                intro=intro,
+		                description=description,
+		                published=0,
+		                archive=0)
 		try:
 			db.session.add(new_idea)
 			db.session.commit()
@@ -92,7 +109,7 @@ def get_idea(id):
 
 @app.route('/admin.html')
 def admin():
-	ideas = Idea.query.filter_by(published=0).order_by(Idea.date.desc()).all()
+	ideas = Idea.query.filter_by(published=0).order_by(Idea.date_.desc()).all()
 	return render_template('admin.html', ideas=ideas)
 
 
@@ -146,4 +163,4 @@ def idea_delete(id):
 
 
 if __name__ == '__main__':
-	app.run(debug=True)
+	app.run()

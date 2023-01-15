@@ -6,6 +6,8 @@ greenlet==2.0.1
 itsdangerous==2.1.2
 Jinja2==3.1.2
 MarkupSafe==2.1.1
--e git+https://ext7-admin@bitbucket.org/ext7-admin/museum-of-ideas.git@7f57c4a3e9b9f272a244af7fb985236fc1bd5d3b#egg=museum
+-e git+https://ext7-admin@bitbucket.org/ext7-admin/museum-of-ideas.git@75fff874138b9bc1fd7729259fc770ec6daa6e8c#egg=museum
+mysql-connector-python==8.0.31
+protobuf==3.20.1
 SQLAlchemy==1.4.46
 Werkzeug==2.2.2
