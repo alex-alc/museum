@@ -1,0 +1,59 @@
+
+{% extends 'idea_edit.html' %}
+
+{% block body %}
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs Section ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h1>Редагування ідеї</h1>
+          <ol>
+            <li><a href="/index.html#catalog">Каталог ідей</a></li>
+            <li>Редагування ідеї</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs Section -->
+
+    <section class="inner-page">
+      <div class="container">
+        <div>
+          <p></p>
+          <form method="post">
+            <label for="category">Виберіть категорію:</label><br>
+            <select name="category" id="category" class="form-select">
+              <option selected>{{ idea.category }}</option>
+              <option value="Art">Мистецтво</option>
+              <option value="IT">IT</option>
+              <option value="Energy">Енергетика</option>
+              <option value="Medicine">Медицина</option>
+              <option value="Biotechnology">Біотехнології</option>
+              <option value="Agriculture">Сільське господарство</option>
+              <option value="Bigdata">Біг дата</option>
+              <option value="Telecommunication">Зв'язок</option>
+              <option value="Robotics">Робототехніка</option>
+            </select><br>
+
+            <h5>Заповніть усі поля:</h5>
+
+            <input type="text" name="author" id="author" class="form-control" placeholder="ПІБ автора" value="{{ idea.author }}"><br>
+            <input type="text" name="email" id="email" class="form-control" placeholder="E-mail" value="{{ idea.email }}"><br>
+            <input type="text" name="phone" id="phone" class="form-control" placeholder="Номер телефону" value="{{ idea.phone }}"><br>
+            <input type="text" name="title" id="title" class="form-control" placeholder="Назва ідеї" value="{{ idea.title }}"><br>
+            <textarea name="intro" id="intro" class="form-control" placeholder="Короткий опис"> {{ idea.intro }} </textarea><br>
+            <textarea name="description" id="description" class="form-control" placeholder="Детальний опис"> {{ idea.description }} </textarea><br>
+
+            <input type="submit" value="Зберегти" class="btn btn-primary">
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+{% endblock %}
