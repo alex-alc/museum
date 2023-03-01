@@ -2,13 +2,14 @@
 name = "museum"
 version = "0.1.0"
 description = ""
-authors = ["ext7 <ext7@ukr.net>"]
+authors = ["Alex AL <a.alchakov@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
 flask = "^2.2.2"
 flask-sqlalchemy = "^3.0.2"
+mysql-connector-python = "^8.0.31"
 
 
 [build-system]

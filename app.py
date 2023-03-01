@@ -16,10 +16,7 @@ db = SQLAlchemy(app)
 
 
 class Idea(db.Model):
-
-	__tablename__ = "idea"
-
-	id = db.Column(db.Integer, primary_key=True)
+	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	author = db.Column(db.String(50), nullable=False)
 	email = db.Column(db.String(50), nullable=False)
 	phone = db.Column(db.String(50), nullable=False)
@@ -89,8 +86,8 @@ def create_idea():
 		                title=title,
 		                intro=intro,
 		                description=description,
-		                published=0,
-		                archive=0)
+		                published=True,
+		                archive=False)
 		try:
 			db.session.add(new_idea)
 			db.session.commit()
@@ -109,7 +106,7 @@ def get_idea(id):
 
 @app.route('/admin.html')
 def admin():
-	ideas = Idea.query.filter_by(published=0).order_by(Idea.date_.desc()).all()
+	ideas = Idea.query.filter_by(category='IT', published=False).order_by(Idea.date_.desc()).all()
 	return render_template('admin.html', ideas=ideas)
 
 
@@ -122,7 +119,6 @@ def admin_idea(id):
 @app.route('/admin/<int:id>/publish')
 def idea_publish(id):
 	idea = Idea.query.get(id)
-	# idea = idea
 	idea.published = True
 	try:
 		db.session.commit()
