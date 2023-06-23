@@ -9,10 +9,10 @@
         <div class="container">
 
             <div class="d-flex justify-content-between align-items-center">
-                <h1 class="text-danger">Адміністратор Музею</h1>
+                <h1>Урбаністика</h1>
                 <ol>
                     <li><a href="/index.html#catalog">Каталог ідей</a></li>
-                    <li>Адміністратор Музею</li>
+                    <li>Урбаністика</li>
                 </ol>
             </div>
 
@@ -28,8 +28,8 @@
                         {% for idea in ideas %}
                             <li>
                                 <article class="box post-excerpt">
-                                    <a href="/admin/{{idea.id}}" class="image left"><img src="static/img/portfolio/idea_icon.jpg" alt="Idea img"></a>
-                                    <h2><a href="/admin/{{idea.id}}"> {{ idea.title }} </a></h2>
+                                    <a href="/ideas/{{idea.id}}" class="image left"><img src="static/img/portfolio/idea_icon.jpg" alt="Idea icon"></a>
+                                    <h2><a href="/ideas/{{idea.id}}"> {{ idea.title }} </a></h2>
                                     {{ idea.date.strftime('%d') }} {{ idea.date.strftime('%B') }} {{ idea.date.year }}
                                     <p> {{ idea.intro }} </p>
                                 </article>
@@ -38,7 +38,7 @@
                     </ul>
                 {% else %}
                     <p></p>
-                    <p>На даний момент відсутні не перевірені ідеї</p>
+                    <p>В даній категорії ще не зареєстровано ідей</p>
                 {% endif %}
 
             </section>

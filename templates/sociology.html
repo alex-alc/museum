@@ -9,10 +9,10 @@
         <div class="container">
 
             <div class="d-flex justify-content-between align-items-center">
-                <h1>Інформаційні технології</h1>
+                <h1>Соціологія</h1>
                 <ol>
                     <li><a href="/index.html#catalog">Каталог ідей</a></li>
-                    <li>Інформаційні технології</li>
+                    <li>Соціологія</li>
                 </ol>
             </div>
 
@@ -28,7 +28,7 @@
                         {% for idea in ideas %}
                             <li>
                                 <article class="box post-excerpt">
-                                    <a href="/ideas/{{idea.id}}" class="image left"><img src="static/img/portfolio/it_idea.jpg" alt="IT"></a>
+                                    <a href="/ideas/{{idea.id}}" class="image left"><img src="static/img/portfolio/idea_icon.jpg" alt="Idea icon"></a>
                                     <h2><a href="/ideas/{{idea.id}}"> {{ idea.title }} </a></h2>
                                     {{ idea.date.strftime('%d') }} {{ idea.date.strftime('%B') }} {{ idea.date.year }}
                                     <p> {{ idea.intro }} </p>
