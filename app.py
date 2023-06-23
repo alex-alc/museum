@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
 
-current_env = ".env-dev"
+current_env = ".env"
 
 HOST = dotenv_values(current_env)["HOST"]
 USER = dotenv_values(current_env)["USER"]
